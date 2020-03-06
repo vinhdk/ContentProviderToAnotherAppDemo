@@ -24,6 +24,11 @@ public class ContactContentActivity extends ListActivity {
             ArrayList<ContactModel> contacts = new ArrayList<ContactModel>();
             if (cursor != null) {
                 if (cursor.moveToFirst()) {
+                    contacts.add(new ContactModel(
+                            cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone._ID)),
+                            cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)),
+                            cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
+                    ));
                     while (cursor.moveToNext()) {
                         ContactModel contact = new ContactModel(
                                 cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone._ID)),
